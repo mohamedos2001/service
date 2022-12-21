@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp
+
+
+spec:
+  selector:
+    matchLabels:
+      app: my-web-app
+  replicas: 2
+  
+  template: 
+    metadata:
+      name: my-web-app
+      labels:
+        app: my-web-app
+
+    spec:
+      containers:
+        - image: mohamedos2001/myimage
+          name: nginx-container
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
